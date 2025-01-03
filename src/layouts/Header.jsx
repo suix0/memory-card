@@ -10,7 +10,7 @@ function Header() {
         <p className="text-4xl">Remember Em` All !!</p>
         <p className="text-base">A Memory Card game by suix0</p>
       </div>
-      <div className="flex flex-col items-center mb-96">
+      <div className="flex justify-center mb-[480px] gap-36 text-2xl">
         <p>Current score: </p>
         <p>Best score: </p>
       </div>

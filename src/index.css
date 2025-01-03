@@ -3,5 +3,8 @@
 @tailwind utilities;
 
 #root {
-  height: 1000svh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100svh;
+  font-family: Chewy;
 }
