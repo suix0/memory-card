@@ -60,7 +60,7 @@ function RenderCards() {
   console.log(pokemonInfo);
 
   return (
-    <div className="">
+    <div className="grid grid-cols-4 gap-4">
       {pokemonInfo.map((pokemon) => {
         return (
           <Card

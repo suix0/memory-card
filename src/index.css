@@ -7,4 +7,10 @@
   grid-template-columns: 1fr 1fr;
   height: 100svh;
   font-family: Chewy;
+
+  background-color: #d03d33;
+}
+
+header {
+  text-shadow: 2px 2px 2px #0075be;
 }
