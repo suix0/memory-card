@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import randomNumbers from "../utils/randomNumbers";
 
 function Card({ pokemonId, spriteUrl }) {
   return (
@@ -14,26 +15,23 @@ function RenderCards() {
   // Fetch Pokemon Images
   useEffect(() => {
     let newPokemonInfo = [];
+    let ignore = false;
 
     // Generate random numbers
-    let randomNumbers = [];
-    let randomNumber = Math.floor(Math.random() * 25 + 1);
-    for (let i = 0; i < 9; i++) {
-      if (randomNumbers.includes(randomNumber) === false) {
-        randomNumbers.push(randomNumber);
-        randomNumber++;
-      }
-    }
+    let randomNumsArr = randomNumbers(40);
     let urls = [
-      `https://pokeapi.co/api/v2/pokemon/${randomNumbers[0]}/`,
-      `https://pokeapi.co/api/v2/pokemon/${randomNumbers[1]}/`,
-      `https://pokeapi.co/api/v2/pokemon/${randomNumbers[2]}/`,
-      `https://pokeapi.co/api/v2/pokemon/${randomNumbers[3]}/`,
-      `https://pokeapi.co/api/v2/pokemon/${randomNumbers[4]}/`,
-      `https://pokeapi.co/api/v2/pokemon/${randomNumbers[5]}/`,
-      `https://pokeapi.co/api/v2/pokemon/${randomNumbers[6]}/`,
-      `https://pokeapi.co/api/v2/pokemon/${randomNumbers[7]}/`,
-      `https://pokeapi.co/api/v2/pokemon/${randomNumbers[8]}/`,
+      `https://pokeapi.co/api/v2/pokemon/${randomNumsArr[0]}/`,
+      `https://pokeapi.co/api/v2/pokemon/${randomNumsArr[1]}/`,
+      `https://pokeapi.co/api/v2/pokemon/${randomNumsArr[2]}/`,
+      `https://pokeapi.co/api/v2/pokemon/${randomNumsArr[3]}/`,
+      `https://pokeapi.co/api/v2/pokemon/${randomNumsArr[4]}/`,
+      `https://pokeapi.co/api/v2/pokemon/${randomNumsArr[5]}/`,
+      `https://pokeapi.co/api/v2/pokemon/${randomNumsArr[6]}/`,
+      `https://pokeapi.co/api/v2/pokemon/${randomNumsArr[7]}/`,
+      `https://pokeapi.co/api/v2/pokemon/${randomNumsArr[8]}/`,
+      `https://pokeapi.co/api/v2/pokemon/${randomNumsArr[9]}/`,
+      `https://pokeapi.co/api/v2/pokemon/${randomNumsArr[10]}/`,
+      `https://pokeapi.co/api/v2/pokemon/${randomNumsArr[11]}/`,
     ]; // Improve the random numbers selection logic
 
     const fetchPokemonData = async () => {
@@ -46,17 +44,23 @@ function RenderCards() {
           url: data.sprites.other.showdown.front_default,
         });
       });
-      setPokemonInfo(newPokemonInfo);
+      if (!ignore) {
+        setPokemonInfo(newPokemonInfo);
+      }
     };
 
     fetchPokemonData();
-    return () => (newPokemonInfo = []);
+
+    return () => {
+      newPokemonInfo = [];
+      ignore = true;
+    };
   }, []);
 
   console.log(pokemonInfo);
 
   return (
-    <div>
+    <div className="">
       {pokemonInfo.map((pokemon) => {
         return (
           <Card
