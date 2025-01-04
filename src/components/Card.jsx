@@ -8,7 +8,6 @@ function Card({ pokemonId, spriteUrl, updateScore, changeCards }) {
       id={pokemonId}
       onClick={(e) => {
         changeCards(e);
-        updateScore();
       }}
     >
       <img
@@ -20,7 +19,7 @@ function Card({ pokemonId, spriteUrl, updateScore, changeCards }) {
   );
 }
 
-function RenderCards({ updateScore }) {
+function RenderCards({ updateScore, resetScore }) {
   const [pokemonInfo, setPokemonInfo] = useState([]);
   const [currentPokemon, setCurrentPokemon] = useState(null); // Store clicked pokemon data
 
@@ -73,6 +72,9 @@ function RenderCards({ updateScore }) {
   function changeCards(e) {
     if (e.target.id !== currentPokemon) {
       setCurrentPokemon(e.target.id);
+      updateScore();
+    } else {
+      resetScore();
     }
   }
 
@@ -83,7 +85,6 @@ function RenderCards({ updateScore }) {
           <Card
             pokemonId={pokemon.id}
             spriteUrl={pokemon.url}
-            updateScore={updateScore}
             changeCards={changeCards}
             key={pokemon.id}
           ></Card>

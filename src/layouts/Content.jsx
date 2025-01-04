@@ -1,9 +1,12 @@
 import RenderCards from "../components/Card";
 
-function Content({ updateScore }) {
+function Content({ updateScore, resetScore }) {
   return (
     <main className="flex justify-center items-center">
-      <RenderCards updateScore={updateScore}></RenderCards>
+      <RenderCards
+        updateScore={updateScore}
+        resetScore={resetScore}
+      ></RenderCards>
     </main>
   );
 }

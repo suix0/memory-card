@@ -10,10 +10,18 @@ function App() {
     setCurrentScore(currentScore + 1);
   }
 
+  function resetScore() {
+    setCurrentScore(0);
+  }
+
+  if (currentScore > bestScore) {
+    setBestScore(currentScore);
+  }
+
   return (
     <>
       <Header currentScore={currentScore} bestScore={bestScore}></Header>
-      <Content updateScore={updateScore}></Content>
+      <Content updateScore={updateScore} resetScore={resetScore}></Content>
     </>
   );
 }
