@@ -1,16 +1,28 @@
 import { useEffect, useState } from "react";
 import randomNumbers from "../utils/randomNumbers";
 
-function Card({ pokemonId, spriteUrl }) {
+function Card({ pokemonId, spriteUrl, updateScore, changeCards }) {
   return (
-    <div className="border-2 border-solid border-blue-600 p-12 rounded-2xl bg-yellow-100">
-      <img src={spriteUrl} id={pokemonId} className="w-24 h-24"></img>
+    <div
+      className="border-2 border-solid border-blue-600 p-12 rounded-2xl bg-yellow-200"
+      id={pokemonId}
+      onClick={(e) => {
+        changeCards(e);
+        updateScore();
+      }}
+    >
+      <img
+        src={spriteUrl}
+        id={pokemonId}
+        className="w-20 h-20 select-none"
+      ></img>
     </div>
   );
 }
 
-function RenderCards() {
+function RenderCards({ updateScore }) {
   const [pokemonInfo, setPokemonInfo] = useState([]);
+  const [currentPokemon, setCurrentPokemon] = useState(null); // Store clicked pokemon data
 
   // Fetch Pokemon Images
   useEffect(() => {
@@ -18,7 +30,7 @@ function RenderCards() {
     let ignore = false;
 
     // Generate random numbers
-    let randomNumsArr = randomNumbers(40);
+    let randomNumsArr = randomNumbers(18);
     let urls = [
       `https://pokeapi.co/api/v2/pokemon/${randomNumsArr[0]}/`,
       `https://pokeapi.co/api/v2/pokemon/${randomNumsArr[1]}/`,
@@ -44,6 +56,7 @@ function RenderCards() {
           url: data.sprites.other.showdown.front_default,
         });
       });
+      console.log(newPokemonInfo);
       if (!ignore) {
         setPokemonInfo(newPokemonInfo);
       }
@@ -55,9 +68,13 @@ function RenderCards() {
       newPokemonInfo = [];
       ignore = true;
     };
-  }, []);
+  }, [currentPokemon]);
 
-  console.log(pokemonInfo);
+  function changeCards(e) {
+    if (e.target.id !== currentPokemon) {
+      setCurrentPokemon(e.target.id);
+    }
+  }
 
   return (
     <div className="grid grid-cols-4 gap-4">
@@ -66,6 +83,8 @@ function RenderCards() {
           <Card
             pokemonId={pokemon.id}
             spriteUrl={pokemon.url}
+            updateScore={updateScore}
+            changeCards={changeCards}
             key={pokemon.id}
           ></Card>
         );
