@@ -34,7 +34,7 @@ function RenderCards({
     let ignore = false;
 
     // Generate random numbers
-    let randomNumsArr = randomNumbers(18);
+    let randomNumsArr = randomNumbers(15);
     let urls = [
       `https://pokeapi.co/api/v2/pokemon/${randomNumsArr[0]}/`,
       `https://pokeapi.co/api/v2/pokemon/${randomNumsArr[1]}/`,
@@ -86,7 +86,7 @@ function RenderCards({
     <div
       className={`${
         isGameOver && "pointer-events-none"
-      } grid xl:grid-cols-4 sm:grid-cols-4 gap-4 xs:grid-cols-4 h-[fit-content]`}
+      } grid xl:grid-cols-4 sm:grid-cols-4 gap-4 xs:grid-cols-4 xs:h-[fit-content]`}
     >
       {pokemonInfo.map((pokemon) => {
         return (
