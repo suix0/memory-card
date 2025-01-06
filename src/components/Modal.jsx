@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function Popup({ gameOver, score, resetScore, setGameOverFalse }) {
+function Modal({ gameOver, score, resetScore, setGameOverFalse }) {
   const [isOpen, setOpen] = useState(false);
 
   function closeHandler(e) {
@@ -17,11 +17,11 @@ function Popup({ gameOver, score, resetScore, setGameOverFalse }) {
   }, [gameOver]);
 
   return (
-    <dialog
-      open={isOpen}
-      className={`${gameOver && "open rounded-2xl mb-[500px]"}`}
+    <div
+      id={`${gameOver ? "open" : "close"}`}
+      className="fixed inset-10 m-auto w-max flex items-center"
     >
-      <div className="flex flex-col items-center px-20 py-8 gap-4 text-yellow-300 bg-[#0075be]">
+      <div className="flex flex-col items-center px-20 py-8 gap-4 rounded-3xl text-yellow-300 bg-[#0075be]">
         <h1 className="text-5xl">GAME OVER</h1>
         <p className="text-2xl">Your score is {score}</p>
         <div className="flex gap-12">
@@ -33,8 +33,8 @@ function Popup({ gameOver, score, resetScore, setGameOverFalse }) {
           </button>
         </div>
       </div>
-    </dialog>
+    </div>
   );
 }
 
-export default Popup;
+export default Modal;
