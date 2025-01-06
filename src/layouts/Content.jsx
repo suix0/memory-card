@@ -8,7 +8,7 @@ function Content({
   setCurrentPokemon,
 }) {
   return (
-    <main className="flex justify-center items-center">
+    <main className="flex justify-center md:items-center sm:items-start bg-[#d03d33]">
       <RenderCards
         updateScore={updateScore}
         resetScore={resetScore}

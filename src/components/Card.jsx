@@ -4,7 +4,7 @@ import randomNumbers from "../utils/randomNumbers";
 function Card({ pokemonId, spriteUrl, changeCards }) {
   return (
     <div
-      className="border-2 border-solid border-blue-600 p-12 sm:p-8 rounded-2xl bg-yellow-200 transition ease-out hover:bg-yellow-100 hover:-translate-y-[4px]"
+      className="border-2 border-solid border-blue-600 p-12 sm:p-8 rounded-2xl bg-yellow-200 transition ease-out hover:bg-yellow-100 hover:-translate-y-[4px] xs:p-4 h-[fit-content]"
       id={pokemonId}
       onClick={(e) => {
         changeCards(e);
@@ -13,7 +13,7 @@ function Card({ pokemonId, spriteUrl, changeCards }) {
       <img
         src={spriteUrl}
         id={pokemonId}
-        className="transition hover:scale-150 sm:w-20 sm:h-20 xl:w-20 xl:h-20 select-none"
+        className="transition hover:scale-150 sm:w-20 sm:h-20 xl:w-20 xl:h-20 xs:w-24 xs:h-20  select-none"
       ></img>
     </div>
   );
@@ -86,7 +86,7 @@ function RenderCards({
     <div
       className={`${
         isGameOver && "pointer-events-none"
-      } grid xl:grid-cols-4 sm:grid-cols-4 gap-4 `}
+      } grid xl:grid-cols-4 sm:grid-cols-4 gap-4 xs:grid-cols-4 h-[fit-content]`}
     >
       {pokemonInfo.map((pokemon) => {
         return (
