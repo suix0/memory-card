@@ -14,3 +14,15 @@
 header {
   text-shadow: 2px 2px 2px #0075be;
 }
+
+dialog {
+  transform: translate(0, -25rem);
+  opacity: 0;
+  transition: all 0.5s ease-in;
+}
+
+.open {
+  transform: translate(0, 0);
+  opacity: 1;
+  transition: all 0.5s ease-out;
+}

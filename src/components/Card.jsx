@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import randomNumbers from "../utils/randomNumbers";
 
-function Card({ pokemonId, spriteUrl, updateScore, changeCards }) {
+function Card({ pokemonId, spriteUrl, changeCards }) {
   return (
     <div
-      className="border-2 border-solid border-blue-600 p-12 rounded-2xl bg-yellow-200"
+      className="border-2 border-solid border-blue-600 p-12 rounded-2xl bg-yellow-200 transition ease-out hover:bg-yellow-100 hover:-translate-y-[4px]"
       id={pokemonId}
       onClick={(e) => {
         changeCards(e);
@@ -13,13 +13,13 @@ function Card({ pokemonId, spriteUrl, updateScore, changeCards }) {
       <img
         src={spriteUrl}
         id={pokemonId}
-        className="w-20 h-20 select-none"
+        className="transition hover:scale-150 w-20 h-20 select-none"
       ></img>
     </div>
   );
 }
 
-function RenderCards({ updateScore, resetScore }) {
+function RenderCards({ updateScore, resetScore, isGameOver }) {
   const [pokemonInfo, setPokemonInfo] = useState([]);
   const [currentPokemon, setCurrentPokemon] = useState(null); // Store clicked pokemon data
 
@@ -79,7 +79,11 @@ function RenderCards({ updateScore, resetScore }) {
   }
 
   return (
-    <div className="grid grid-cols-4 gap-4">
+    <div
+      className={`${
+        isGameOver && "pointer-events-none"
+      } grid grid-cols-4 gap-4`}
+    >
       {pokemonInfo.map((pokemon) => {
         return (
           <Card
