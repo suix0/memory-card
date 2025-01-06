@@ -3,7 +3,7 @@ function Header({ currentScore, bestScore }) {
     <header className="flex flex-col md:justify-center sm:justify-start gap-20 text-yellow-300">
       <div className="flex flex-col items-center">
         <img
-          src={"/public/PokemonLogo.png"}
+          src="/PokemonLogo.png"
           alt="Pokemon Text Logo"
           className="md:w-[600px] sm:w-[300px] xs:w-[250px]"
         ></img>
