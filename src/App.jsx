@@ -7,7 +7,7 @@ function App() {
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [isGameOver, setIsGameOver] = useState(false);
-  const [currentPokemon, setCurrentPokemon] = useState(null);
+  const [clickedPokemons, setClickedPokemon] = useState([]);
 
   function updateScore() {
     setCurrentScore(currentScore + 1);
@@ -15,7 +15,7 @@ function App() {
 
   function resetScore() {
     setIsGameOver(true);
-    setCurrentPokemon(null);
+    setClickedPokemon([]);
   }
 
   if (currentScore > bestScore) {
@@ -29,8 +29,8 @@ function App() {
         updateScore={updateScore}
         resetScore={resetScore}
         isGameOver={isGameOver}
-        currentPokemon={currentPokemon}
-        setCurrentPokemon={setCurrentPokemon}
+        clickedPokemons={clickedPokemons}
+        setClickedPokemon={setClickedPokemon}
       ></Content>
       <Modal
         gameOver={isGameOver}

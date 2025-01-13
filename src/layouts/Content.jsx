@@ -4,8 +4,8 @@ function Content({
   updateScore,
   resetScore,
   isGameOver,
-  currentPokemon,
-  setCurrentPokemon,
+  clickedPokemons,
+  setClickedPokemon,
 }) {
   return (
     <main className="flex justify-center md:items-center sm:items-start bg-[#d03d33]">
@@ -13,8 +13,8 @@ function Content({
         updateScore={updateScore}
         resetScore={resetScore}
         isGameOver={isGameOver}
-        currentPokemon={currentPokemon}
-        setCurrentPokemon={setCurrentPokemon}
+        clickedPokemons={clickedPokemons}
+        setClickedPokemon={setClickedPokemon}
       ></RenderCards>
     </main>
   );

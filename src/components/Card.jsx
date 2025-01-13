@@ -23,8 +23,8 @@ function RenderCards({
   updateScore,
   resetScore,
   isGameOver,
-  currentPokemon,
-  setCurrentPokemon,
+  clickedPokemons,
+  setClickedPokemon,
 }) {
   const [pokemonInfo, setPokemonInfo] = useState([]);
 
@@ -71,11 +71,11 @@ function RenderCards({
       newPokemonInfo = [];
       ignore = true;
     };
-  }, [currentPokemon]);
+  }, [clickedPokemons]);
 
   function changeCards(e) {
-    if (e.target.id !== currentPokemon) {
-      setCurrentPokemon(e.target.id);
+    if (!clickedPokemons.includes(e.target.id)) {
+      setClickedPokemon([...clickedPokemons, e.target.id]);
       updateScore();
     } else {
       resetScore();
