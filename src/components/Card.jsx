@@ -34,7 +34,7 @@ function RenderCards({
     let ignore = false;
 
     // Generate random numbers
-    let randomNumsArr = randomNumbers(15);
+    let randomNumsArr = randomNumbers(40);
     let urls = [
       `https://pokeapi.co/api/v2/pokemon/${randomNumsArr[0]}/`,
       `https://pokeapi.co/api/v2/pokemon/${randomNumsArr[1]}/`,
